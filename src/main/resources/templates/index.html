@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recipe Home</title>
+
+    <!-- LEZIONE 171 copiato da BOOSTRAP CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <!-- LEZIONE 171 copiato da BOOSTRAP CDN -->
+</head>
+
+<body>
+
+<!-- LEZIONE 171 copiato da BOOSTRAP CDN -->
+<!--
+<h1>My Recipes!</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}">123</td>
+        <td th:text="${recipe.description}">Tasty Goodnees</td>
+    </tr>
+</table>
+-->
+
+<!-- CLASSE CONTAINER FLUID CON MARGINE DI 20 PIXELS -->
+<!-- RISPETTO AL TOP IN ALTO DELLA PAGINA WEB -->
+<!-- BOOSTRAP FUNZIONA CON LAYOUT A GRIGLIA -->
+<div class="container-fluid" style="margin-top: 20px">
+    <!-- DEFINISCO UNA RIGA -->
+    <div class="row">
+        <!-- DEFINISCO UN PANNELLO CON GRIGLIA A 12 COLONNE -->
+        <!-- AVENTE CONTENUTO 6 COLONNE E COMPENSATO CON OFFESET DI 3 -->
+        <!-- PERTANTO AVREMO 3(OFFSET) + 6(CONTENUTO) + 3(OFFSET)-->
+        <!-- IN MODO CHE IL CONTENUTO SARA' CENTRATO -->
+        <div class="col-md-6 col-md-offset-3">
+            <!-- DEFINISCO LA CLASSE DEL PANNELLO COME PRIMARY (ARROTONDATO) -->
+            <div class="panel panel-primary">
+                <!-- DEFINISCO LA TESTATA DEL PANNELLO CON LO STESSO TESTO -->
+                <!-- DELLA VERSIONE PRECEDENTE CIOE My Recipes! E LA CLASSE -->
+                <!-- DEL TESTO panel-title -->
+                <div class="panel-heading">
+                    <h1 class="panel-title">My Recipes!</h1>
+                </div>
+                <!-- DEFINISCO IL CORPO DEL PANNELLO -->
+                <div class="panel-body">
+                    <!-- DEFINISCO UNA TABELLA RESPONSIVA (RISPOSTA)DENTRO IL PANNELLO -->
+                    <!-- USANDO UN TAG THEAMELEAF PER GESTIRE -->
+                    <!-- IL CASO IN CUI SIA VUOTO L'OGGETTO recipes CHE ARRIVA DAL BACKEND -->
+                    <!-- NON MOSTRERO' DEL TUTTO LA TABELLA SOTTOSTANTE -->
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
+                        <!-- DEFINISCO LA CLASSE DELLA TABELLA IN MODO -->
+                        <!-- DA IMPOSTARE LO STILE DEL CSS AL PASSAGGIO DEL MOUSE -->
+                        <!-- SULLA TABELLA IL TUTTO MEDIANTE LA CLASSE hover -->
+                        <!-- INFATTI QUANDO SI PASSA COL MOUSE SULLE RIGHE -->
+                        <!-- ESSE VENGONO EVIDENZIATE -->
+                        <table class="table table-hover ">
+                            <!-- DEFINISCO LA TESTATA DELLA TABELLA -->
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <!-- DEFINISCO RIGHE tr COLONNE td DELLA TABELLA -->
+                            <!-- UTILIZZO ALTRI TAG DI THYMELEAF -->
+                            <!-- PER POPOLARE I CAMPI DELLA TABELLA -->
+                            <!-- DEFINISCO ANCHE I VALORI VISUALIZZATI -->
+                            <!-- QUANDO E' VISUALIZZATA LA PAGINA WEB COSA CHE MI AIUTA -->
+                            <!-- IN FASE DI SVILUPPO -->
+                            <tr th:remove="all">
+                                <td th:text="${recipe.id}">123</td>
+                                <td th:text="${recipe.description}">Tasty Goodnees 1</td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td th:text="${recipe.id}">12333</td>
+                                <td th:text="${recipe.description}">Tasty Goodnees 2</td>
+                            </tr>
+                            <tr th:each="recipe : ${recipes}">
+                                <td th:text="${recipe.id}">334</td>
+                                <td th:text="${recipe.description}">Tasty Goodnees 3</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LEZIONE 171 copiato da BOOSTRAP CDN -->
+
+</body>
+</html>
